@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+kyiv:
+build: ./cities/kyiv
+london:
+build: ./cities/london
+ottawa:
+build: ./cities/ottawa
+build: ./webserver
+ports:
+- "8080:80"
+depends_on:
+- kyiv
+- london
+- ottawa
+trivy:
+build: ./security
+volumes:
+- /var/run/docker.sock:/var/run/docker.sock
+
